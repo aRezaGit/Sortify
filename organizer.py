@@ -9,8 +9,8 @@ FILE_CATEGORIES = {
     "Documents": [".pdf", ".doc", ".docx", ".txt", ".ppt", ".pptx", ".xls", ".xlsx", ".csv"],
     "Music": [".mp3", ".wav", ".aac", ".flac"],
     "Archives": [".zip", ".rar", ".7z", ".tar", ".gz"],
-    "Programs": [".exe", ".msi", ".dmg", ".apk", ".deb"],
-    "Code": [".py", ".js", ".html", ".css", ".java", ".cpp", ".php"]
+    "Programs": [".exe", ".msi", ".dmg", ".apk", ".deb", ".rpm", ".appimage"],
+    "Code": [".py", ".js", ".html", ".css", ".java", ".cpp", ".php", ".c", ".ts", ".go", ".rs"]
 }
 
 class FileOrganizer:
@@ -49,8 +49,8 @@ class FileOrganizer:
 
         # Iterate through all items in the directory
         for item in self.target_dir.iterdir():
-            # Skip system files (like .DS_Store on macOS)
-            if item.is_file() and item.name != ".DS_Store":
+            # Skip system files and the script itself
+            if item.is_file() and item.name != ".DS_Store" and item.name != "main.py":
                 category = self.get_category(item.suffix)
                 destination_folder = self.target_dir / category
                 
