@@ -14,5 +14,3 @@
 ```bash
    git clone https://github.com/aRezaGit/Sortify.git
    cd Sortify
-   
-.
